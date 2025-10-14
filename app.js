@@ -15,8 +15,6 @@ function initApp() {
   document.querySelector("#search-input").addEventListener("input", filterGames);
   document.querySelector("#genre-select").addEventListener("change", filterGames);
   document.querySelector("#sort-select").addEventListener("change", filterGames);
-  document.querySelector("#year-from").addEventListener("input", filterGames);
-  document.querySelector("#year-to").addEventListener("input", filterGames);
   document.querySelector("#rating-from").addEventListener("input", filterGames);
   document.querySelector("#rating-to").addEventListener("input", filterGames);
 
@@ -36,13 +34,13 @@ async function getGames() {
   displayGames(allGames); // Vis alle games ved start
 }
 
-// ===== VISNING AF FILM =====
+// ===== VISNING AF SPIL =====
 // #3: Display all games - vis en liste af spil på siden
 function displayGames(games) {
   const gameList = document.querySelector("#game-list"); // Find container til spil
   gameList.innerHTML = ""; // Ryd gammel liste (fjern alt HTML indhold)
 
-  // Hvis ingen film matcher filtrene, vis en besked til brugeren
+  // Hvis ingen spil matcher filtrene, vis en besked til brugeren
   if (games.length === 0) {
     gameList.innerHTML = '<p class="no-results">Ingen spil matchede dine filtre 😢</p>';
     return; // Stop funktionen her - return betyder "stop her og gå ikke videre"
@@ -119,13 +117,22 @@ function populateGenreDropdown() {
 // #6: Vis spil i modal dialog - popup vindue med spil detaljer
 function showGameModal(game) {
   // Find modal indhold container og byg HTML struktur dynamisk
+  //tilføj indhold fra JSON 
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
     <img src="${game.image}" alt="Poster af ${game.title}" class="game-poster">
     <div class="dialog-details">
-      <h2>${game.title} <span class="game-year">(${game.year})</span></h2>
-      <p class="game-genre">${game.genre.join(", ")}</p>
-      <p class="game-rating">⭐ ${game.rating}</p>
+      <p class="game-genre">${game.genre}</p>
       <p class="game-description">${game.description}</p>
+      <p class="game-playtime">${game.playtime}</p>
+      <p class="game-players">${game.players}</p>
+      <p class="game-language">${game.language}</p>
+      <p class="game-rating">⭐ ${game.rating}</p>
+      <p class="game-age">${game.age}</p>
+      <p class="game-difficulty">${game.difficulty}</p>
+      <p class="game-location">${game.location}</p>
+      <p class="game-shelf">${game.shelf}</p>
+      <p class="game-available">${game.available}</p>
+      <p class="rules">${game.rules}</p>
     </div>
   `;
 
@@ -140,8 +147,6 @@ function clearAllFilters() {
   document.querySelector("#search-input").value = "";
   document.querySelector("#genre-select").value = "all";
   document.querySelector("#sort-select").value = "none";
-  document.querySelector("#year-from").value = "";
-  document.querySelector("#year-to").value = "";
   document.querySelector("#rating-from").value = "";
   document.querySelector("#rating-to").value = "";
 
@@ -157,10 +162,8 @@ function filterGames() {
   const sortValue = document.querySelector("#sort-select").value;
 
   // Number() konverterer string til tal, || 0 giver default værdi hvis tomt
-  const yearFrom = Number(document.querySelector("#year-from").value) || 0;
-  const yearTo = Number(document.querySelector("#year-to").value) || 9999;
   const ratingFrom = Number(document.querySelector("#rating-from").value) || 0;
-  const ratingTo = Number(document.querySelector("#rating-to").value) || 10;
+  const ratingTo = Number(document.querySelector("#rating-to").value) || 5;
 
   // Start med alle spil - kopiér til ny variabel så vi ikke ændrer originalen
   let filteredGames = allGames;
@@ -183,14 +186,6 @@ function filterGames() {
     });
   }
 
-  // FILTER 3: År range - filtrer spil mellem to årstal
-  if (yearFrom > 0 || yearTo < 9999) {
-    // Kun filtrer hvis der er sat grænser
-    filteredGames = filteredGames.filter(game => {
-      // Check om spillets år er mellem min og max værdi
-      return game.year >= yearFrom && game.year <= yearTo;
-    });
-  }
 
   // FILTER 4: Rating range - filtrer spil mellem to ratings
   if (ratingFrom > 0 || ratingTo < 10) {
