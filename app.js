@@ -64,7 +64,7 @@ function displayGame(game) {
            class="game-poster" />
       <div class="game-info">
         <p class="game-genre">${game.genre}</p>
-        <p class="game-rating">⭐ ${game.rating}</p>
+        <p class="game-rating"> ${game.rating}</p>
       </div>
     </article>
   `;
@@ -125,7 +125,7 @@ function showGameModal(game) {
       <p class="game-playtime">${game.playtime}</p>
       <p class="game-players">${game.players}</p>
       <p class="game-language">${game.language}</p>
-      <p class="game-rating">⭐ ${game.rating}</p>
+      <p class="game-rating"> ${game.rating}</p>
       <p class="game-age">${game.age}</p>
       <p class="game-difficulty">${game.difficulty}</p>
       <p class="game-location">${game.location}</p>
