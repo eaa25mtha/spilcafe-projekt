@@ -58,43 +58,45 @@ main {
 
 .filterbar{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: auto 1fr; 
+  grid-template-rows: auto auto;  
+  gap: 1rem 1.25rem;
+  align-items: start;
+}
+
+.logo{ 
+  grid-column: 1; 
+  grid-row: 1 / span 2; 
+  display:flex; 
+  align-items:center; 
+}
+.logo img{ 
+  height: 
+  72px; 
+  width:auto; 
+  display:block; 
 }
 
 .filterbar-top{
+  grid-column: 2; 
+  grid-row: 1;
   display: grid;
-  
-  grid-template-columns: auto 2fr 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  width: 100%;
+  grid-template-columns: 1fr;
+
 }
 
 .filterbar-bund{
+  grid-column: 2; 
+  grid-row: 2;
   display: grid;
-  grid-column: 2/3;
-  grid-template-columns: auto 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin-bottom: 1rem;
-
-}
-
-.logo{
-  display: flex;
-  align-items: center;
-}
-
-.logo img {
-  height: 150px;
-  width: auto;
-  display: block;
+  align-items: end;
 }
 
 /* Filter grupper */
 .filter-group {
   display: flex;
-  flex-direction: column;
   gap: 0.5rem;
 }
 
@@ -584,5 +586,4 @@ dialog#game-dialog::backdrop {
   }
 }
 
-/* FILTERBAR*/
 
