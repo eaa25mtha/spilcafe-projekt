@@ -15,8 +15,6 @@ function initApp() {
   document.querySelector("#search-input").addEventListener("input", filterGames);
   document.querySelector("#genre-select").addEventListener("change", filterGames);
   document.querySelector("#sort-select").addEventListener("change", filterGames);
-  //document.querySelector("#rating-from").addEventListener("input", filterGames);
-  //document.querySelector("#rating-to").addEventListener("input", filterGames);
 
   // Event listener for clear-knappen - rydder alle filtre
   document.querySelector("#clear-filters").addEventListener("click", clearAllFilters);
@@ -113,8 +111,7 @@ function populateGenreDropdown() {
 
 // #6: Vis spil i modal dialog - popup vindue med spil detaljer
 function showGameModal(game) {
-  // Find modal indhold container og byg HTML struktur dynamisk
-  //tilføj indhold fra JSON 
+  // Find modal indhold container og byg HTML struktur dynamisk 
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
     <img src="${game.image}" alt="Poster af ${game.title}" class="game-poster">
     <div class="dialog-details">
@@ -144,8 +141,6 @@ function clearAllFilters() {
   document.querySelector("#search-input").value = "";
   document.querySelector("#genre-select").value = "all";
   document.querySelector("#sort-select").value = "none";
-  document.querySelector("#rating-from").value = "";
-  document.querySelector("#rating-to").value = "";
 
   // Kør filtrering igen (vil vise alle film da alle filtre er ryddet)
   filterGames();
@@ -158,9 +153,6 @@ function filterGames() {
   const genreValue = document.querySelector("#genre-select").value;
   const sortValue = document.querySelector("#sort-select").value;
 
-  // Number() konverterer string til tal, || 0 giver default værdi hvis tomt
-  //const ratingFrom = Number(document.querySelector("#rating-from").value) || 0;
-  //const ratingTo = Number(document.querySelector("#rating-to").value) || 5;
 
   // Start med alle spil - kopiér til ny variabel så vi ikke ændrer originalen
   let filteredGames = allGames;
@@ -174,6 +166,7 @@ function filterGames() {
     });
   }
 
+
   // FILTER 2: Genre - filtrer på valgt genre
   if (genreValue !== "all") {
     // Kun filtrer hvis ikke "all" er valgt
@@ -184,25 +177,12 @@ function filterGames() {
   }
 
 
-  // FILTER 4: Rating range - filtrer spil mellem to ratings
- // if (ratingFrom > 0 || ratingTo < 10) {
-    // Kun filtrer hvis der er sat grænser
-  //  filteredGames = filteredGames.filter(game => {
-      // Check om spillets rating er mellem min og max værdi
-   //   return game.rating >= ratingFrom && game.rating <= ratingTo;
- //   });
- // }
-
-
   // SORTERING (altid til sidst efter alle filtre er anvendt)
   if (sortValue === "title") {
     // Alfabetisk sortering - localeCompare() håndterer danske bogstaver korrekt
     filteredGames.sort((a, b) => a.title.localeCompare(b.title));
   } 
-  //else if (sortValue === "rating") {
-    // Sortér på rating (højeste først) - b - a giver descending order
-    //filteredGames.sort((a, b) => b.rating - a.rating);
-//  }
+  
 
   // Vis de filtrerede spil på siden
   displayGames(filteredGames);
