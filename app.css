@@ -7,6 +7,8 @@
   --primary-color: #BF171C;
   --secondary-color: #000000;
   --third-color: #f6c9c9;
+  --fourth-color:rgba(249, 219, 37, 1);
+  --error: #ea4335;
 
   /* Text - colors */
   --primary-text: white;
@@ -16,9 +18,6 @@
   --background: #BF171C;
   --background-card: #f6c9c9;
 
-  /* Semantic */
-  --warning: #F9DB25;
-  --error: #ea4335;
 
   /* Effects */
   --shadow: 0 4px 6px -1px rgba(255, 0, 0, 0.255);
@@ -55,31 +54,41 @@ main {
   padding: clamp(5rem, 10vw, 8rem) 1rem 2rem;
 }
 
-/* =====================
-   FILTERBAR (SØG/SORT/FILTER)
-   ===================== */
-.filterbar {
-  background: var(--primary-color);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid white;
+/* Filter rækker */
+
+.filterbar{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
-/* Filter rækker */
-.filter-row-main {
+.filterbar-top{
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  
+  grid-template-columns: auto 2fr 1fr 1fr;
   gap: 1rem;
   margin-bottom: 1rem;
+  width: 100%;
 }
 
-.filter-row-ranges {
+.filterbar-bund{
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-column: 2/3;
+  grid-template-columns: auto 2fr 1fr 1fr;
   gap: 1rem;
-  align-items: end;
+  margin-bottom: 1rem;
+
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 150px;
+  width: auto;
+  display: block;
 }
 
 /* Filter grupper */
@@ -139,14 +148,14 @@ main {
 #genre-select:focus,
 #sort-select:focus,
 #rating-from:focus,
-#rating-to:focus {
+#rating-to:focus{
   outline: none;
   border-color: var(--third-color);
   box-shadow: 0 0 0 3px rgba(172, 198, 201, 0.2);
 }
 
 #search-input::placeholder,
-#rating-from::placeholder,
+#rating-from::placeholder*,
 #rating-to::placeholder {
   color: var(--primary-text);
   opacity: 0.6;
@@ -443,10 +452,11 @@ dialog#game-dialog::backdrop {
 /* =====================
    CLEAR FILTERS BUTTON
    ===================== */
+
 #clear-filters {
-  background: linear-gradient(135deg, var(--error) 0%, #c62828 100%);
-  color: white;
-  border: none;
+  background: var(--fourth-color);
+  color: var(--secondary-color);
+  border: var(--secondary-color);
   border-radius: calc(var(--radius) * 0.5);
   padding: 0.875rem 1.5rem;
   font-size: 0.95rem;
@@ -462,8 +472,9 @@ dialog#game-dialog::backdrop {
 
 #clear-filters:hover {
   transform: translateY(-2px);
+  color: white;
   box-shadow: var(--shadow-lg);
-  background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+  background: var(--secondary-color);
 }
 
 #clear-filters:active {
@@ -572,3 +583,6 @@ dialog#game-dialog::backdrop {
     background: rgba(23, 23, 23, 0.9);
   }
 }
+
+/* FILTERBAR*/
+

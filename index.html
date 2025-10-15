@@ -21,20 +21,32 @@
       <!-- Filter bar med alle filtreringsmuligheder -->
       <section class="filterbar">
         <!-- Øverste række: Søg og genre -->
+         
+        <section class="filterbar-top">
+        <!--Logo-->
+        <div class="logo">
+          <img src="img/spilcafe.logo.webp" alt="spilcaféen logo">
+        </div>
+
+        <!--søgefelt-->
         <div class="filter-row-main">
           <div class="filter-group search-group">
             <label for="search-input"> Søg</label>
             <input type="text" id="search-input" placeholder="Søg efter et spil..." />
           </div>
+        </section>
 
+        <section class="filterbar-bund">
+          <!--Kategori-->
           <div class="filter-group">
             <label for="genre-select"> Kategori</label>
             <select id="genre-select">
               <option value="all">Alle kategorier</option>
               <!-- Kategorier indsættes dynamisk via JavaScript -->
             </select>
-          </div>
 
+            <!--Sortering-->
+          </div>
           <div class="filter-group">
             <label for="sort-select"> Sortering</label>
             <select id="sort-select">
@@ -43,24 +55,28 @@
               <option value="rating">Rating (højeste først)</option>
             </select>
           </div>
+          </section>
         </div>
 
+
           <!-- Rating range filter -->
+           <!--
           <div class="filter-group range-group">
-            <label class="range-label"> Rating</label>
+            <label class="range-label">⭐ Rating</label>
             <div class="range-inputs">
               <input type="number" id="rating-from" placeholder="0.0" min="0" max="10" step="0.1" />
               <span class="range-separator">→</span>
               <input type="number" id="rating-to" placeholder="10.0" min="0" max="10" step="0.1" />
             </div>
           </div>
-
+        -->
           <!-- Ryd alle filtre knap -->
           <button id="clear-filters" class="clear-btn">
             <span class="btn-icon">🗑️</span>
             <span class="btn-text">Nulstil filtre</span>
           </button>
         </div>
+
       </section>
 
       <!-- spil grid -->

@@ -63,7 +63,6 @@ function displayGame(game) {
            alt="Poster of ${game.title}" 
            class="game-poster" />
       <div class="game-info">
-        <h3>${game.title} <span class="game-year">(${game.year})</span></h3>
         <p class="game-genre">${game.genre}</p>
         <p class="game-rating">⭐ ${game.rating}</p>
       </div>
@@ -188,25 +187,24 @@ function filterGames() {
 
 
   // FILTER 4: Rating range - filtrer spil mellem to ratings
-  if (ratingFrom > 0 || ratingTo < 10) {
+ // if (ratingFrom > 0 || ratingTo < 10) {
     // Kun filtrer hvis der er sat grænser
-    filteredGames = filteredGames.filter(game => {
+  //  filteredGames = filteredGames.filter(game => {
       // Check om spillets rating er mellem min og max værdi
-      return game.rating >= ratingFrom && game.rating <= ratingTo;
-    });
-  }
+   //   return game.rating >= ratingFrom && game.rating <= ratingTo;
+ //   });
+ // }
+
 
   // SORTERING (altid til sidst efter alle filtre er anvendt)
   if (sortValue === "title") {
     // Alfabetisk sortering - localeCompare() håndterer danske bogstaver korrekt
     filteredGames.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (sortValue === "year") {
-    // Sortér på år (nyeste først) - b - a giver descending order
-    filteredGames.sort((a, b) => b.year - a.year);
-  } else if (sortValue === "rating") {
+  } 
+  //else if (sortValue === "rating") {
     // Sortér på rating (højeste først) - b - a giver descending order
-    filteredGames.sort((a, b) => b.rating - a.rating);
-  }
+    //filteredGames.sort((a, b) => b.rating - a.rating);
+//  }
 
   // Vis de filtrerede spil på siden
   displayGames(filteredGames);
