@@ -15,8 +15,8 @@ function initApp() {
   document.querySelector("#search-input").addEventListener("input", filterGames);
   document.querySelector("#genre-select").addEventListener("change", filterGames);
   document.querySelector("#sort-select").addEventListener("change", filterGames);
-  document.querySelector("#rating-from").addEventListener("input", filterGames);
-  document.querySelector("#rating-to").addEventListener("input", filterGames);
+  //document.querySelector("#rating-from").addEventListener("input", filterGames);
+  //document.querySelector("#rating-to").addEventListener("input", filterGames);
 
   // Event listener for clear-knappen - rydder alle filtre
   document.querySelector("#clear-filters").addEventListener("click", clearAllFilters);
@@ -98,13 +98,11 @@ function populateGenreDropdown() {
   // Samle alle unikke genrer fra alle spil
   // Hvert spil kan have flere genrer (array), så vi løber gennem dem alle
   for (const game of allGames) {
-    for (const genre of game.genre) {
-      genres.add(genre); // Set sikrer kun unikke værdier
+      genres.add(game.genre); // Set sikrer kun unikke værdier
     }
-  }
 
   // Fjern gamle options undtagen 'Alle genrer' (reset dropdown)
-  genreSelect.innerHTML = /*html*/ `<option value="all">Alle genrer</option>`;
+  genreSelect.innerHTML = /*html*/ `<option value="all">Ingen filtrering</option>`;
 
   // Sortér genres alfabetisk og tilføj dem som options
   const sortedGenres = [...genres].sort(); // Konvertér Set til Array og sortér genrer
@@ -161,8 +159,8 @@ function filterGames() {
   const sortValue = document.querySelector("#sort-select").value;
 
   // Number() konverterer string til tal, || 0 giver default værdi hvis tomt
-  const ratingFrom = Number(document.querySelector("#rating-from").value) || 0;
-  const ratingTo = Number(document.querySelector("#rating-to").value) || 5;
+  //const ratingFrom = Number(document.querySelector("#rating-from").value) || 0;
+  //const ratingTo = Number(document.querySelector("#rating-to").value) || 5;
 
   // Start med alle spil - kopiér til ny variabel så vi ikke ændrer originalen
   let filteredGames = allGames;
