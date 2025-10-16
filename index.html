@@ -15,6 +15,9 @@
 
   <body>
     <main>
+      <!-- Indsætter logo, og inddeler sektionen "filterbar" i to classes: 
+       top(søgefelt) og bund(genre og sortering), for nemmere at kunne style med css.
+       Sletter rating-range-filter -->
 
       <!-- Filterbar -->
       <section class="filterbar">
@@ -38,7 +41,7 @@
           <div class="filter-group">
             <label for="genre-select">Kategori</label>
             <select id="genre-select">
-              <option value="all">Alle kategorier</option>
+              <option value="all">Kategorier</option>
             </select>
           </div>
 
@@ -46,7 +49,7 @@
           <div class="filter-group">
             <label for="sort-select">Sortér</label>
             <select id="sort-select">
-              <option value="none">Ingen Sortering</option>
+              <option value="none">Sortering</option>
               <option value="title">Titel (A–Å)</option>
             </select>
           </div>
@@ -79,6 +82,7 @@
       </form>
     </dialog>
 
+    <!-- link til javascriptet -->
     <script src="app.js"></script>
   </body>
 </html>

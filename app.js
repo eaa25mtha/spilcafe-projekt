@@ -61,8 +61,7 @@ function displayGame(game) {
            alt="Poster of ${game.title}" 
            class="game-poster" />
       <div class="game-info">
-        <p class="game-genre">${game.genre}</p>
-        <p class="game-rating"> ${game.rating}</p>
+        <p class="game-title">${game.title}</p>
       </div>
     </article>
   `;
@@ -100,7 +99,7 @@ function populateGenreDropdown() {
     }
 
   // Fjern gamle options undtagen 'Alle genrer' (reset dropdown)
-  genreSelect.innerHTML = /*html*/ `<option value="all">Ingen filtrering</option>`;
+  genreSelect.innerHTML = /*html*/ `<option value="all">Filtrering</option>`;
 
   // Sortér genres alfabetisk og tilføj dem som options
   const sortedGenres = [...genres].sort(); // Konvertér Set til Array og sortér genrer
@@ -117,19 +116,18 @@ function showGameModal(game) {
     <div class="dialog-details">
       <p class="game-genre">${game.genre}</p>
       <p class="game-description">${game.description}</p>
+      <p class="game-players">${game.players}</p> 
       <p class="game-playtime">${game.playtime}</p>
-      <p class="game-players">${game.players}</p>
       <p class="game-language">${game.language}</p>
-      <p class="game-rating"> ${game.rating}</p>
       <p class="game-age">${game.age}</p>
       <p class="game-difficulty">${game.difficulty}</p>
       <p class="game-location">${game.location}</p>
       <p class="game-shelf">${game.shelf}</p>
-      <p class="game-available">${game.available}</p>
       <p class="rules">${game.rules}</p>
     </div>
   `;
 
+  
   // Åbn modalen - showModal() er en built-in browser funktion
   document.querySelector("#game-dialog").showModal();
 }
