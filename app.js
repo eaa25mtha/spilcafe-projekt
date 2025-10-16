@@ -116,7 +116,7 @@ function showGameModal(game) {
     <div class="dialog-details">
       <p class="game-genre">${game.genre}</p>
       <p class="game-description">${game.description}</p>
-      <p class="game-players">${game.players}</p> 
+      <p class="game-players">${game.players.min}, ${game.players.max} </p> 
       <p class="game-playtime">${game.playtime}</p>
       <p class="game-language">${game.language}</p>
       <p class="game-age">${game.age}</p>
