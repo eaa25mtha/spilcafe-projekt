@@ -15,7 +15,6 @@
 
   /* Backgrounds */
   --background: #bf171c;
-  --background-card: #f6c9c9;
 
   /* Effects */
   --shadow: 0 4px 6px -1px rgba(255, 0, 0, 0.255);
@@ -172,6 +171,8 @@ main {
 #sort-select:focus {
   outline: 3px solid var(--secondary-color);
 }
+
+
 
 
 /* =====================
@@ -435,17 +436,6 @@ dialog#game-dialog::backdrop {
     max-width: 350px;
     margin: 0 auto;
   }
-
-  header h1 {
-    font-size: 1.75rem;
-  }
-}
-
-/* Focus helper */
-.game-card:focus-visible,
-#close-dialog:focus-visible {
-  outline: 3px solid var(--error);
-  outline-offset: 2px;
 }
 
 /* dark mode slettet */
